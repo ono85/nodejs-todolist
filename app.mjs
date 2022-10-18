@@ -6,8 +6,14 @@ const host = "localhost"
 
 const service = new TodolistService()
 const server = http.createServer( (request, response)=> {
+	response.setHeader("content-Type", "application/json")
+
     if( request.method === "GET"){
 		service.getTodoList(request, response)
+	}
+
+	if( request.method === "POST"){
+		service.createTodo(request, response)
 	}
 })
 
